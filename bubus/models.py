@@ -5,12 +5,16 @@ import inspect
 import logging
 import os
 from collections.abc import Awaitable, Callable, Generator
-from datetime import UTC, datetime
-from typing import TYPE_CHECKING, Annotated, Any, Literal, Protocol, Self, TypeAlias, TypeVar, runtime_checkable
+from datetime import timezone, datetime
+from typing import TYPE_CHECKING, Annotated, Any, Literal, Protocol, TypeAlias, TypeVar, runtime_checkable
+from typing_extensions import Self
 from uuid import UUID
 
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, PrivateAttr, model_validator
 from uuid_extensions import uuid7str
+
+# Use timezone.utc directly in your code
+UTC = timezone.utc
 
 if TYPE_CHECKING:
     from bubus.service import EventBus

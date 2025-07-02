@@ -7,6 +7,7 @@ from collections.abc import Callable, Coroutine
 from functools import wraps
 from pathlib import Path
 from typing import Any, Literal, ParamSpec, TypeVar
+from .compatible_utils.async_timeout import async_timeout
 
 import portalocker
 
@@ -219,7 +220,7 @@ async def _acquire_asyncio_semaphore(
 ) -> bool:
     """Acquire an asyncio semaphore."""
     try:
-        async with asyncio.timeout(sem_timeout):
+        async with async_timeout(sem_timeout):
             await semaphore.acquire()
             return True
     except TimeoutError:
@@ -252,7 +253,7 @@ async def _execute_with_retries(
     for attempt in range(retries + 1):
         try:
             # Execute with per-attempt timeout
-            async with asyncio.timeout(timeout):
+            async with async_timeout(timeout):
                 return await func(*args, **kwargs)  # type: ignore[reportCallIssue]
 
         except Exception as e:

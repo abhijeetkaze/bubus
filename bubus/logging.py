@@ -1,8 +1,12 @@
 """Helper functions for logging event trees and formatting"""
 
 from collections import defaultdict
-from datetime import UTC, datetime
+from datetime import timezone, datetime
 from typing import TYPE_CHECKING, Any
+
+
+# Use timezone.utc directly in your code
+UTC = timezone.utc
 
 if TYPE_CHECKING:
     from bubus.models import BaseEvent, EventResult

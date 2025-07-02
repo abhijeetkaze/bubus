@@ -6,6 +6,26 @@ It's designed for quickly building event-driven applications with Python in a wa
 
 It provides a [pydantic](https://docs.pydantic.dev/latest/)-based API for implementing publish-subscribe patterns with type safety, async/sync handler support, and advanced features like event forwarding between buses. It's inspired by the simplicity of `JS`'s async system and DOM events APIs, and it aims to bring a fully type-checked [`EventTarget`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget)-style API to Python.
 
+## ⚠️ Note
+
+**This is a modified version of [bubus](https://github.com/abhijeetkaze/bubus) to support Python 3.10.**
+
+[![PyPI version](https://img.shields.io/pypi/v/bubus-py310x)](https://pypi.org/project/bubus-py310x/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/bubus-py310x)](https://pypi.org/project/bubus-py310x/)
+[![Downloads](https://static.pepy.tech/badge/bubus-py310x)](https://pepy.tech/project/bubus-py310x)
+[![GitHub stars](https://img.shields.io/github/stars/abhijeetkaze/bubus?style=social)](https://github.com/abhijeetkaze/bubus/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/abhijeetkaze/bubus)](https://github.com/abhijeetkaze/bubus/commits/main)
+
+A minimal fork of `bubus` with compatibility fixes for Python 3.10+.  
+
+- Maintainer for Python 3.10 version: **[Abhijeet Mohanta](https://github.com/abhijeetkaze)**
+- `bubus` is mocked to enable compatibility with Python 3.10.
+- Cloud actions are **not supported** in this version.
+- `from typing_extensions import Self` (for Python 3.10 compatibility) is used in place of `Self` from `typing`.
+- `async with asyncio.timeout` replaced with `async_timeout` (custom implementation of async timeout) to support Python 3.10.
+- UTC datetime changed to timezone(UTC = timezone.utc)
+- asyncio.create_task no context passed
+
 ## 🔢 Quickstart
 
 Install bubus and get started with a simple event-driven application:

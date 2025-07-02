@@ -796,7 +796,7 @@ class EventBus:
                 task = asyncio.create_task(
                     self._execute_sync_or_async_handler(event, handler, timeout=timeout),
                     name=f'{self}._execute_sync_or_async_handler({event}, {get_handler_name(handler)})',
-                    context=context,
+                    # context=context,
                 )
                 handler_tasks[handler_id] = (task, handler)
 
